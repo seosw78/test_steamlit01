@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import koreanize_matplotlib
 
 # Load the dataset
 file_path = '2023_인구.csv'
