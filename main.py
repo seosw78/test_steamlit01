@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import koreanize_matplotlib
 
 # Load the dataset
-file_path = '2023_인구.csv'
+file_path = 'path_to_your_file.csv'  # 이 부분을 업로드된 파일 경로로 수정
 population_data = pd.read_csv(file_path, encoding='euc-kr')
 
 # Extract necessary columns and clean the data
@@ -42,7 +42,7 @@ female_data['인구수'] = pd.to_numeric(female_data['인구수'].str.replace(',
 age_groups = [col.split('_')[1] for col in male_columns]
 
 # Plotting the data
-fig, ax = plt.subplots(figsize=(16, 14))  # Increase figure size, height is 1.3x
+fig, ax = plt.subplots(figsize=(16, 18))  # Increase figure size, height is 1.5x
 
 # Plot male population (positive values)
 ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
@@ -61,7 +61,7 @@ plt.xticks(rotation=45)
 # Add the ticks for both positive and negative values
 max_population = max(male_data['인구수'].max(), female_data['인구수'].max())
 ax.set_xlim(-max_population, max_population)
-ax.xaxis.set_major_locator(plt.MultipleLocator(2000))  # Set x-axis interval to 2000
+ax.xaxis.set_major_locator(plt.MultipleLocator(1000))  # Set x-axis interval to 1000
 
 # Adjust layout for better fit
 fig.tight_layout(pad=3.0)
