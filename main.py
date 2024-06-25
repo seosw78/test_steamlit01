@@ -42,7 +42,7 @@ female_data['인구수'] = pd.to_numeric(female_data['인구수'].str.replace(',
 age_groups = [col.split('_')[1] for col in male_columns]
 
 # Plotting the data
-fig, ax = plt.subplots(figsize=(16, 24))  # Increase figure size, height is doubled
+fig, ax = plt.subplots(figsize=(16, 18))  # Increase figure size, height is 1.5x
 
 # Plot male population (positive values)
 ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
