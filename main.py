@@ -51,12 +51,12 @@ ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
 ax.barh(age_groups, -female_data['인구수'], color='lightpink', label='여성')
 
 ax.set_title(f'{selected_region} 연령대별 인구수')
-ax.set_xlabel('인구수')
 ax.set_ylabel('연령')
+ax.set_xlabel('인구수')
 ax.legend()
 
-# Rotate x-axis labels
-plt.xticks(rotation=45)
+# Rotate y-axis labels
+plt.yticks(rotation=45)
 
 # Add the ticks for both positive and negative values
 max_population = max(male_data['인구수'].max(), female_data['인구수'].max())
