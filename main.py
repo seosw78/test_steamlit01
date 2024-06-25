@@ -34,6 +34,10 @@ male_data.columns = ['인구수']
 female_data = region_data[female_columns].T
 female_data.columns = ['인구수']
 
+# Convert data to numeric
+male_data['인구수'] = pd.to_numeric(male_data['인구수'].str.replace(',', ''), errors='coerce')
+female_data['인구수'] = pd.to_numeric(female_data['인구수'].str.replace(',', ''), errors='coerce')
+
 # Extract age groups from column names
 age_groups = [col.split('_')[1] for col in male_columns]
 
