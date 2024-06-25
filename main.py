@@ -15,8 +15,8 @@ male_columns = [col for col in population_data.columns if '남' in col]
 female_columns = [col for col in population_data.columns if '여' in col]
 
 # Ensure the columns are in the same order
-male_columns.sort()
-female_columns.sort()
+male_columns.sort(key=lambda x: int(x.split('_')[1][:-1]))  # Sort by age
+female_columns.sort(key=lambda x: int(x.split('_')[1][:-1]))  # Sort by age
 
 # Streamlit app
 st.title('연령대별 인구수 시각화')
@@ -42,7 +42,7 @@ female_data['인구수'] = pd.to_numeric(female_data['인구수'].str.replace(',
 age_groups = [col.split('_')[1] for col in male_columns]
 
 # Plotting the data
-fig, ax = plt.subplots(figsize=(14, 10))  # Increase figure size
+fig, ax = plt.subplots(figsize=(16, 12))  # Increase figure size
 
 # Plot male population (positive values)
 ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
@@ -61,5 +61,8 @@ plt.xticks(rotation=45)
 # Add the ticks for both positive and negative values
 max_population = max(male_data['인구수'].max(), female_data['인구수'].max())
 ax.set_xlim(-max_population, max_population)
+
+# Adjust layout for better fit
+fig.tight_layout(pad=3.0)
 
 st.pyplot(fig)
