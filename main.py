@@ -42,7 +42,7 @@ female_data['인구수'] = pd.to_numeric(female_data['인구수'].str.replace(',
 age_groups = [col.split('_')[1] for col in male_columns]
 
 # Plotting the data
-fig, ax = plt.subplots(figsize=(16, 12))  # Increase figure size
+fig, ax = plt.subplots(figsize=(16, 24))  # Increase figure size, height is doubled
 
 # Plot male population (positive values)
 ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
@@ -61,6 +61,7 @@ plt.xticks(rotation=45)
 # Add the ticks for both positive and negative values
 max_population = max(male_data['인구수'].max(), female_data['인구수'].max())
 ax.set_xlim(-max_population, max_population)
+ax.xaxis.set_major_locator(plt.MultipleLocator(1000))  # Set x-axis interval to 1000
 
 # Adjust layout for better fit
 fig.tight_layout(pad=3.0)
