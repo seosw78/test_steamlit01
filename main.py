@@ -45,14 +45,14 @@ age_groups = [col.split('_')[1] for col in male_columns]
 fig, ax = plt.subplots(figsize=(14, 10))  # Increase figure size
 
 # Plot male population (positive values)
-ax.barh(age_groups, male_data['인구수'], color='skyblue', label='남성')
+ax.barh(male_data['인구수'], age_groups,  color='skyblue', label='남성')
 
 # Plot female population (negative values)
-ax.barh(age_groups, -female_data['인구수'], color='lightpink', label='여성')
+ax.barh(-female_data['인구수'], age_groups, color='lightpink', label='여성')
 
 ax.set_title(f'{selected_region} 연령대별 인구수')
-ax.set_ylabel('연령')
-ax.set_xlabel('인구수')
+ax.set_xlabel('연령')
+ax.set_ylabel('인구수')
 ax.legend()
 
 # Rotate y-axis labels
